@@ -9,10 +9,17 @@ import FileWatcher
 import Foundation
 
 public struct DirectoryEvent: Sendable {
-    let path: String
-    let description: String
+    public let path: String
+    public let description: String
 
-    public init?(_ fileWatcherEvent: FileWatcherEvent) {
+    public init(path: String, description: String) {
+        self.path = path
+        self.description = description
+    }
+}
+
+extension DirectoryEvent {
+    init?(_ fileWatcherEvent: FileWatcherEvent) {
         guard fileWatcherEvent.dirChanged || fileWatcherEvent.fileChanged else {
             return nil
         }

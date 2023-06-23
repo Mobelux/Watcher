@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum DirectoryWatcherError: Error {
+public enum DirectoryWatcherError: Error {
     case custom(String)
 }
