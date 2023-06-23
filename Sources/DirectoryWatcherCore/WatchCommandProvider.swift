@@ -10,13 +10,14 @@ import GlobPattern
 import ShellOut
 
 struct WatchCommandProvider {
+    private let watchedPath: String
     private let logger: @Sendable (String) -> Void
     private let executor: @Sendable (String) -> Void
 
     func watchCommand(_ configuration: CommandConfiguration) throws -> @Sendable (DirectoryEvent) -> Void {
         let pattern = try Glob.Pattern(configuration.pattern, mode: Constants.globPatternGrouping)
         return { event in
-            guard pattern.match(event.path) else {
+            guard pattern.match(event.path.removingPrefix(watchedPath)) else {
                 return
             }
 
@@ -27,8 +28,12 @@ struct WatchCommandProvider {
 }
 
 extension WatchCommandProvider {
-    static func live(logger: @escaping @Sendable (String) -> Void = log(_:)) -> Self {
+    static func live(
+        watching watchedPath: String,
+        logger: @escaping @Sendable (String) -> Void = log(_:)
+    ) -> Self {
         return WatchCommandProvider(
+            watchedPath: watchedPath,
             logger: logger,
             executor: { command in
                 do {

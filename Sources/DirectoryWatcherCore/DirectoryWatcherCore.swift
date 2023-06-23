@@ -25,7 +25,7 @@ public struct DirectoryWatcherCore {
         }
 
         // Make commands
-        let commandProvider = WatchCommandProvider.live()
+        let commandProvider = WatchCommandProvider.live(watching: folder.path)
         let commands: [@Sendable (DirectoryEvent) -> Void] = try configs.map(commandProvider.watchCommand(_:))
 
         log("Watching `\(folder.path)`...")
