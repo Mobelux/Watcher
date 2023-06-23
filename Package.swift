@@ -13,6 +13,7 @@ let package = Package(
         .library(name: "DirectoryMonitorCore", targets: ["DirectoryWatcherCore"])
     ],
     dependencies: [
+        .package(url: "https://github.com/ChimeHQ/GlobPattern.git", from: "0.1.0"),
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.0"),
         .package(url: "https://github.com/eonist/FileWatcher.git", from: "0.2.3"),
         .package(url: "https://github.com/johnsundell/files.git", from: "4.0.0"),
@@ -32,6 +33,7 @@ let package = Package(
             dependencies: [
                 .product(name: "FileWatcher", package: "FileWatcher"),
                 .product(name: "Files", package: "files"),
+                .product(name: "GlobPattern", package: "GlobPattern"),
                 .product(name: "ShellOut", package: "shellout"),
                 .product(name: "Yams", package: "yams")
             ]
