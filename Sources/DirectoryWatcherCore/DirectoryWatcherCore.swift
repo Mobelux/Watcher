@@ -29,10 +29,11 @@ extension DirectoryWatcherCore {
         .detached {
             do {
                 for try await event in FileWatcher.changes(on: paths, debouncedBy: nanoseconds) {
+                    log("Event: \(event)")
                     await operation(event)
                 }
             } catch {
-                print("Error: \(error)")
+                log("Error: \(error)")
                 return
             }
         }
