@@ -19,7 +19,9 @@ public extension FileWatcher {
 
             let watcher = FileWatcher(paths)
             watcher.callback = { watcherEvent in
-                let event = DirectoryEvent(watcherEvent)
+                guard let event = DirectoryEvent(watcherEvent) else {
+                    return
+                }
 
                 guard let nanoseconds else {
                     continuation.yield(event)
