@@ -10,7 +10,7 @@ let package = Package(
     ],
     products: [
         .executable(name: "directory-watcher", targets: ["DirectoryWatcher"]),
-        .library(name: "DirectoryMonitorCore", targets: ["DirectoryWatcherCore"])
+        .library(name: "DirectoryWatcherCore", targets: ["DirectoryWatcherCore"])
     ],
     dependencies: [
         .package(url: "https://github.com/ChimeHQ/GlobPattern.git", from: "0.1.0"),
