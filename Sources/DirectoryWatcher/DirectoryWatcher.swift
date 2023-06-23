@@ -12,6 +12,7 @@ import DirectoryWatcherCore
 @main
 struct DirectoryWatcher: AsyncParsableCommand {
     mutating func run() async throws {
-        
+        let watchTask = try DirectoryWatcherCore.watch()
+        try await watchTask.value
     }
 }
