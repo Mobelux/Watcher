@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "globpattern",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ChimeHQ/GlobPattern.git",
+      "state" : {
+        "revision" : "93c5308b13980265b77c2c652a674ef882aa1ed9",
+        "version" : "0.1.0"
+      }
+    },
+    {
       "identity" : "shellout",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/johnsundell/shellout.git",

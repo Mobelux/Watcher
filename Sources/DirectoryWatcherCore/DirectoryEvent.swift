@@ -9,9 +9,11 @@ import FileWatcher
 import Foundation
 
 public struct DirectoryEvent: Sendable {
-    let url: URL
+    let path: String
+    let description: String
 
     public init(_ fileWatcherEvent: FileWatcherEvent) {
-        self.url = URL(fileURLWithPath: fileWatcherEvent.path)
+        self.path = fileWatcherEvent.path
+        self.description = fileWatcherEvent.description
     }
 }
