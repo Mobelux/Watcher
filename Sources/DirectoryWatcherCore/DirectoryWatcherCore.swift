@@ -5,6 +5,7 @@
 //  Created by Mathew Gacy on 6/22/23.
 //
 
+import AsyncAlgorithms
 import Files
 import FileWatcher
 import Foundation
@@ -41,12 +42,14 @@ public struct DirectoryWatcherCore {
 extension DirectoryWatcherCore {
     static func makeTask(
         watching paths: [String],
-        debouncedBy nanoseconds: UInt64? = nil,
+        debouncedBy debounceDelay: Int,
         operation: @escaping @Sendable (DirectoryEvent) async -> Void
     ) -> Task<Void, Error> {
         .detached {
             do {
-                for try await event in FileWatcher.changes(on: paths, debouncedBy: nanoseconds) {
+                for try await event in EventStreamGenerator
+                    .changes(on: paths)
+                    .debounce(for: .seconds(debounceDelay)) {
                     await operation(event)
                 }
             } catch {

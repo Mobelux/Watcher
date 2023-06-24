@@ -15,6 +15,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/ChimeHQ/GlobPattern.git", from: "0.1.0"),
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.0"),
+        .package(url: "https://github.com/apple/swift-async-algorithms", from: "0.1.0"),
         .package(url: "https://github.com/eonist/FileWatcher.git", from: "0.2.3"),
         .package(url: "https://github.com/johnsundell/files.git", from: "4.0.0"),
         .package(url: "https://github.com/johnsundell/shellout.git", from: "2.3.0"),
@@ -31,6 +32,7 @@ let package = Package(
         .target(
             name: "DirectoryWatcherCore",
             dependencies: [
+                .product(name: "AsyncAlgorithms", package: "swift-async-algorithms"),
                 .product(name: "FileWatcher", package: "FileWatcher"),
                 .product(name: "Files", package: "files"),
                 .product(name: "GlobPattern", package: "GlobPattern"),
