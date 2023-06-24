@@ -6,32 +6,32 @@
 //
 
 import AsyncAlgorithms
-import Files
 import FileWatcher
 import Foundation
 
 public struct DirectoryWatcherCore {
     public static func watch(
-        folder: Folder = .current,
+        path: String? = nil,
         configurationPath: String? = nil,
         debounceDelay: Int? = nil
     ) throws -> Task<Void, Error> {
+        let watchedPath = path ?? FileManager.default.currentDirectoryPath
 
         // Load configuration
         let configURL = configurationPath.flatMap { URL(fileURLWithPath: $0) }
-            ?? folder.url.appendingPathComponent(Constants.defaultConfigurationPath)
+            ?? URL(fileURLWithPath: watchedPath).appendingPathComponent(Constants.defaultConfigurationPath)
 
         guard let configs: [CommandConfiguration] = try YAMLReader.live.read(at: configURL) else {
             throw DirectoryWatcherError.custom("Unable to read config")
         }
 
         // Make commands
-        let commandProvider = WatchCommandProvider.live(watching: folder.path)
+        let commandProvider = WatchCommandProvider.live(watching: watchedPath)
         let commands: [@Sendable (DirectoryEvent) -> Void] = try configs.map(commandProvider.watchCommand(_:))
 
-        log("Watching `\(folder.path)`...")
+        log("Watching `\(watchedPath)`...")
         return makeTask(
-            watching: [folder.path],
+            watching: [watchedPath],
             debouncedBy: debounceDelay ?? Constants.debounceDelay,
             operation: { event in
                 commands.forEach { $0(event) }
