@@ -14,6 +14,16 @@ struct WatchCommandProvider {
     private let logger: @Sendable (String) -> Void
     private let executor: @Sendable (String) -> Void
 
+    init(
+        watchedPath: String,
+        logger: @escaping @Sendable (String) -> Void,
+        executor: @escaping @Sendable (String) -> Void
+    ) {
+        self.watchedPath = watchedPath
+        self.logger = logger
+        self.executor = executor
+    }
+
     func watchCommand(_ configuration: CommandConfiguration) throws -> @Sendable (DirectoryEvent) -> Void {
         let pattern = try Glob.Pattern(configuration.pattern, mode: Constants.globPatternGrouping)
         return { event in
