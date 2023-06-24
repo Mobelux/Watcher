@@ -12,14 +12,14 @@ import Foundation
 
 public struct DirectoryWatcherCore {
     public static func watch(
-        from folder: Folder = .current,
-        configurationPath: String? = nil
+        folder: Folder = .current,
+        configurationPath: String? = nil,
+        debounceDelay: Int? = nil
     ) throws -> Task<Void, Error> {
 
         // Load configuration
-        let configURL = configurationPath != nil ?
-            URL(fileURLWithPath: configurationPath!) :
-            folder.url.appendingPathComponent(Constants.defaultConfigurationPath)
+        let configURL = configurationPath.flatMap { URL(fileURLWithPath: $0) }
+            ?? folder.url.appendingPathComponent(Constants.defaultConfigurationPath)
 
         guard let configs: [CommandConfiguration] = try YAMLReader.live.read(at: configURL) else {
             throw DirectoryWatcherError.custom("Unable to read config")
@@ -32,7 +32,7 @@ public struct DirectoryWatcherCore {
         log("Watching `\(folder.path)`...")
         return makeTask(
             watching: [folder.path],
-            debouncedBy: Constants.debounceDelay,
+            debouncedBy: debounceDelay ?? Constants.debounceDelay,
             operation: { event in
                 commands.forEach { $0(event) }
             })
