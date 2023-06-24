@@ -7,6 +7,13 @@
 
 import Foundation
 
-public enum DirectoryWatcherError: Error {
+public enum DirectoryWatcherError: LocalizedError {
     case custom(String)
+
+    public var errorDescription: String? {
+        switch self {
+        case .custom(let message):
+            return message
+        }
+    }
 }
