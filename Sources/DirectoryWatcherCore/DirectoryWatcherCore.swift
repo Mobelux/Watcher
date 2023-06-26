@@ -13,7 +13,7 @@ public struct DirectoryWatcherCore {
     public static func watch(
         path: String? = nil,
         configurationPath: String? = nil,
-        debounceDelay: Int? = nil
+        throttleInterval: Int? = nil
     ) throws -> Task<Void, Error> {
         let watchedPath = path ?? FileManager.default.currentDirectoryPath
 
@@ -32,7 +32,7 @@ public struct DirectoryWatcherCore {
         log("Watching `\(watchedPath)`...")
         return makeTask(
             watching: [watchedPath],
-            debouncedBy: debounceDelay ?? Constants.debounceDelay,
+            throttleInterval: throttleInterval ?? Constants.throttleInterval,
             operation: { event in
                 commands.forEach { $0(event) }
             })
@@ -42,14 +42,14 @@ public struct DirectoryWatcherCore {
 extension DirectoryWatcherCore {
     static func makeTask(
         watching paths: [String],
-        debouncedBy debounceDelay: Int,
+        throttleInterval: Int,
         operation: @escaping @Sendable (DirectoryEvent) async -> Void
     ) -> Task<Void, Error> {
         .detached {
             do {
                 for try await event in EventStreamGenerator
                     .changes(on: paths)
-                    .debounce(for: .seconds(debounceDelay)) {
+                    .throttle(for: .seconds(throttleInterval)) {
                     await operation(event)
                 }
             } catch {
