@@ -26,12 +26,14 @@ struct WatchCommandProvider {
 
     func watchCommand(_ configuration: CommandConfiguration) throws -> @Sendable (DirectoryEvent) -> Void {
         let pattern = try Glob.Pattern(configuration.pattern, mode: Constants.globPatternGrouping)
+        let commandDescription = configuration.name ?? "`\(configuration.command)`"
         return { event in
-            guard pattern.match(event.path.removingPrefix(watchedPath)) else {
+            let relativePath = event.path.removingPrefix(watchedPath)
+            guard pattern.match(relativePath) else {
                 return
             }
 
-            logger("\(event.path) changed: performing \(configuration.command)")
+            logger("∆: \(relativePath) - Performing: \(commandDescription)")
             executor(configuration.command)
         }
     }
@@ -49,6 +51,7 @@ extension WatchCommandProvider {
                 do {
                     try shellOut(
                         to: command,
+                        at: watchedPath,
                         outputHandle: FileHandle.standardOutput,
                         errorHandle: FileHandle.standardError
                     )
