@@ -10,11 +10,13 @@ import Foundation
 struct CommandConfiguration: Codable, Equatable {
     let pattern: String
     let command: String
+    let exclude: String?
     let name: String?
 
-    init(pattern: String, command: String, name: String? = nil) {
+    init(pattern: String, command: String, exclude: String? = nil, name: String? = nil) {
         self.pattern = pattern
         self.command = command
+        self.exclude = exclude
         self.name = name
     }
 }
