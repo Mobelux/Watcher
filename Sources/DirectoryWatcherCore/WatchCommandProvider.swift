@@ -36,7 +36,7 @@ struct WatchCommandProvider {
                 return
             }
 
-            logger("∆: \(relativePath) - Performing: \(commandDescription)")
+            logger("∆: `\(relativePath)` - Performing: \(commandDescription)")
             executor(configuration.command)
         }
     }
