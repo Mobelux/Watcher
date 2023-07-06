@@ -12,9 +12,9 @@ enum Mock {}
 
 // MARK: - Configuration
 extension Mock {
-    static let swiftPattern = "Sources/**/*.swift"
-    static let scssPattern = "src/scss/**/*.scss"
-    static let excludePattern = "**/ignore.scss"
+    static let swiftPattern = "/Sources/**/*.swift"
+    static let scssPattern = "/src/scss/**/*.scss"
+    static let excludePattern = "/**/ignore.scss"
 
     static var configYAML = """
     - pattern: "\(swiftPattern)"
@@ -36,22 +36,22 @@ extension Mock {
 
 // MARK: - Paths
 extension Mock {
-    static let watchedPath = "/Users/jane/Developer/Publish/"
+    static let watchedPath = "/Users/jane/Developer/Publish"
 
     static var matchingCSSPath: String {
-        "\(watchedPath)src/scss/components/_nav.scss"
+        "\(watchedPath)/src/scss/components/_nav.scss"
     }
 
     static var matchingSwiftPath: String {
-        "\(watchedPath)Sources/Extensions/String+Utils.swift"
+        "\(watchedPath)/Sources/Extensions/String+Utils.swift"
     }
 
     static var notMatchingPath: String {
-        "\(watchedPath)README.md"
+        "\(watchedPath)/README.md"
     }
 
     static var excludedPath: String {
-        "\(watchedPath)src/scss/foo/ignore.scss"
+        "\(watchedPath)/src/scss/foo/ignore.scss"
     }
 }
 
