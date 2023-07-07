@@ -6,7 +6,6 @@
 //
 
 import AsyncAlgorithms
-import FileWatcher
 import Foundation
 
 public struct DirectoryWatcherCore {

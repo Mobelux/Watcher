@@ -25,15 +25,18 @@ struct WatchCommandProvider {
     }
 
     func watchCommand(_ configuration: CommandConfiguration) throws -> @Sendable (DirectoryEvent) -> Void {
-        let pattern = try Glob.Pattern(configuration.pattern, mode: Constants.globPatternGrouping)
+        let watchPatttern = try Glob.Pattern(configuration.pattern, mode: Constants.globPatternGrouping)
+        let excludePattern = try configuration.exclude
+            .flatMap { try Glob.Pattern($0, mode: Constants.globPatternGrouping) }
         let commandDescription = configuration.name ?? "`\(configuration.command)`"
+
         return { event in
             let relativePath = event.path.removingPrefix(watchedPath)
-            guard pattern.match(relativePath) else {
+            guard watchPatttern.match(relativePath), !(excludePattern?.match(relativePath) ?? false) else {
                 return
             }
 
-            logger("∆: \(relativePath) - Performing: \(commandDescription)")
+            logger("∆: `\(relativePath)` - Performing: \(commandDescription)")
             executor(configuration.command)
         }
     }
