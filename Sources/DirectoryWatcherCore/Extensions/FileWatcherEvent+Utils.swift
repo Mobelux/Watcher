@@ -5,6 +5,7 @@
 //  Created by Mathew Gacy on 6/23/23.
 //
 
+#if canImport(FileWatcher)
 import FileWatcher
 
 extension FileWatcherEvent {
@@ -16,3 +17,4 @@ extension FileWatcherEvent {
         dirCreated || dirRemoved || dirRenamed || dirModified
     }
 }
+#endif

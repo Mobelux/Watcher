@@ -32,7 +32,7 @@ let package = Package(
             name: "DirectoryWatcherCore",
             dependencies: [
                 .product(name: "AsyncAlgorithms", package: "swift-async-algorithms"),
-                .product(name: "FileWatcher", package: "FileWatcher"),
+                .product(name: "FileWatcher", package: "FileWatcher", condition: .when(platforms: [.macOS])),
                 .product(name: "GlobPattern", package: "GlobPattern"),
                 .product(name: "ShellOut", package: "shellout"),
                 .product(name: "Yams", package: "yams")
