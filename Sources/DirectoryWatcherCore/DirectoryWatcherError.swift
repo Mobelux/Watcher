@@ -7,7 +7,9 @@
 
 import Foundation
 
+/// Errors thrown by DirectoryWatcher.
 public enum DirectoryWatcherError: LocalizedError {
+    /// An error with a custom description.
     case custom(String)
 
     public var errorDescription: String? {
