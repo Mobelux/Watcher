@@ -1,0 +1,5 @@
+# Release Instructions
+
+This tool uses the [swift-version-file-plugin](https://github.com/Mobelux/swift-version-file-plugin) Swift Package Manager command plugin to maintain a source file--[`Sources/watcher/Version.swift`](Sources/watcher/Version.swift)--supplying the value that is returned when the tool is run with the `--version` option. To ensure that this is properly maintained, releases should only be created using the [`Prepare Release`](http://github.com/Mobelux/Watcher/actions/workflows/prepare-release.yml) workflow.
+
+To prepare a new release, run the workflow using `workflow_dispatch` event trigger from the `main` branch with the appropriate release type. This will create a new PR on a `release` branch containing an update to the Version file. Any additional changes related to the release, like updating a changelog, should be added to this PR. Merging the `release` branch into `main` will delete it and trigger the [`Tag Release`](.github/workflows/tag-release.yml) workflow to create a new tag corresponding to the value of the updated Version file.
