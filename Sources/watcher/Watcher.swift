@@ -22,7 +22,7 @@ struct Watcher: AsyncParsableCommand {
 
     /// Runs the command.
     mutating func run() async throws {
-        let watchTask = try DirectoryWatcherCore.watch(
+        let watchTask = try WatcherCore.watch(
             configurationPath: config,
             throttleInterval: throttle)
         try await watchTask.value
