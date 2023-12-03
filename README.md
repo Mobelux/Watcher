@@ -1,4 +1,4 @@
-# DirectoryWatcher
+# Watcher
 
 Swift CLI tool to execute commands when watched directories are modified
 
@@ -24,7 +24,7 @@ Copy the resulting binary at `.build/release/directory-watcher` to a location wh
 
 ## 🎛️ Configuration
 
-DirectoryWatcher uses a `.watcher.yml` file at the root of the watched directory to define commands to execute when files matching a given glob -- and optionally, not matching an `exclude` glob -- are modified:
+Watcher uses a `.watcher.yml` file at the root of the watched directory to define commands to execute when files matching a given glob -- and optionally, not matching an `exclude` glob -- are modified:
 
 ```yml
 - pattern: "/Sources/**/*.swift"
