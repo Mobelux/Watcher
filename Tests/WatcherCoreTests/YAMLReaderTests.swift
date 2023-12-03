@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 
-final class YAMLReaderTests: XCTest {
+final class YAMLReaderTests: XCTestCase {
     let configURL = URL(fileURLWithPath: "\(Mock.commandConfigurations)\(".watcher.yml")")
 
     func testReadValidConfig() throws {
@@ -27,9 +27,9 @@ final class YAMLReaderTests: XCTest {
 
     func testReadInvalidValidConfig() throws {
         let sut = YAMLReader(read: { _ in "foo" })
-        XCTAssertThrowsError({
-            let config: [CommandConfiguration]? = try sut.read(at: self.configURL)
-            _ = config
-        })
+        let read: () throws -> [CommandConfiguration]? = {
+            try sut.read(at: self.configURL)
+        }
+        XCTAssertThrowsError(try read())
     }
 }
