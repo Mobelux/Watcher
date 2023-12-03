@@ -17,10 +17,10 @@ make install
 Clone this repo and build the executable:
 
 ```
-swift build -c release directory-watcher
+swift build -c release watcher
 ```
 
-Copy the resulting binary at `.build/release/directory-watcher` to a location where it can be executed like `/usr/local/bin`
+Copy the resulting binary at `.build/release/watcher` to a location where it can be executed like `/usr/local/bin`
 
 ## 🎛️ Configuration
 
@@ -40,7 +40,7 @@ The optional `name` value is used for terminal output.
 ## ⚙️ Usage
 
 ```
-USAGE: directory-watcher [--config <config>] [--throttle <throttle>]
+USAGE: watcher [--config <config>] [--throttle <throttle>]
 
 OPTIONS:
   -c, --config <config>   The path to a configuration file.
