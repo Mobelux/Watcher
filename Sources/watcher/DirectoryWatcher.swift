@@ -7,7 +7,7 @@
 
 import ArgumentParser
 import Foundation
-import DirectoryWatcherCore
+import WatcherCore
 
 /// The entry point for the `DirectoryWatcher` command-line tool.
 @main

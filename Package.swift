@@ -4,13 +4,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "DirectoryWatcher",
+    name: "Watcher",
     platforms: [
         .macOS(.v13),
     ],
     products: [
-        .executable(name: "directory-watcher", targets: ["DirectoryWatcher"]),
-        .library(name: "DirectoryWatcherCore", targets: ["DirectoryWatcherCore"])
+        .executable(name: "watcher", targets: ["watcher"]),
+        .library(name: "WatcherCore", targets: ["WatcherCore"])
     ],
     dependencies: [
         .package(url: "https://github.com/ChimeHQ/GlobPattern.git", from: "0.1.0"),
@@ -22,14 +22,14 @@ let package = Package(
     ],
     targets: [
         .executableTarget(
-            name: "DirectoryWatcher",
+            name: "watcher",
             dependencies: [
-                "DirectoryWatcherCore",
+                "WatcherCore",
                 .product(name: "ArgumentParser", package: "swift-argument-parser")
             ]
         ),
         .target(
-            name: "DirectoryWatcherCore",
+            name: "WatcherCore",
             dependencies: [
                 .product(name: "AsyncAlgorithms", package: "swift-async-algorithms"),
                 .product(name: "FileWatcher", package: "FileWatcher"),
@@ -39,8 +39,8 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "DirectoryWatcherCoreTests",
-            dependencies: ["DirectoryWatcherCore"]
+            name: "WatcherCoreTests",
+            dependencies: ["WatcherCore"]
         )
     ]
 )
