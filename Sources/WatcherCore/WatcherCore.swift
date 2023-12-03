@@ -29,7 +29,7 @@ public struct WatcherCore {
             ?? URL(fileURLWithPath: watchedPath).appendingPathComponent(Constants.defaultConfigurationPath)
 
         guard let configs: [CommandConfiguration] = try YAMLReader.live.read(at: configURL) else {
-            throw DirectoryWatcherError.custom("Unable to read expected config at `\(configURL)`")
+            throw WatcherError.custom("Unable to read expected config at `\(configURL)`")
         }
 
         // Make commands
