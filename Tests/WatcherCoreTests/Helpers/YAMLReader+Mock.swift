@@ -1,6 +1,6 @@
 //
 //  YAMLReader+Mock.swift
-//  DirectoryWatcher
+//  Watcher
 //
 //  Created by Mathew Gacy on 7/6/23.
 //

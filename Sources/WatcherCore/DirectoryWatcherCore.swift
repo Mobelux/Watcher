@@ -1,6 +1,6 @@
 //
 //  DirectoryWatcherCore.swift
-//  DirectoryWatcher
+//  Watcher
 //
 //  Created by Mathew Gacy on 6/22/23.
 //
@@ -8,7 +8,7 @@
 import AsyncAlgorithms
 import Foundation
 
-/// The entry point for the `DirectoryWatcher` command-line tool.
+/// The entry point for the `Watcher` command-line tool.
 public struct DirectoryWatcherCore {
     /// Watch the given directory for changes and execute commands in response.
     ///

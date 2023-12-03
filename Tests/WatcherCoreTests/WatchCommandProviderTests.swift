@@ -1,6 +1,6 @@
 //
 //  WatchCommandProviderTests.swift
-//  DirectoryWatcher
+//  Watcher
 //
 //  Created by Mathew Gacy on 6/24/23.
 //

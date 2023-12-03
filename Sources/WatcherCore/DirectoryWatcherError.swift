@@ -1,13 +1,13 @@
 //
 //  DirectoryWatcherError.swift
-//  DirectoryWatcher
+//  Watcher
 //
 //  Created by Mathew Gacy on 6/23/23.
 //
 
 import Foundation
 
-/// Errors thrown by DirectoryWatcher.
+/// Errors thrown by Watcher.
 public enum DirectoryWatcherError: LocalizedError {
     /// An error with a custom description.
     case custom(String)

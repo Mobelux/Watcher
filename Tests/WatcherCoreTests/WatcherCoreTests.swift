@@ -1,6 +1,6 @@
 //
 //  DirectoryWatcherCoreTests.swift
-//  DirectoryWatcher
+//  Watcher
 //
 //  Created by Mathew Gacy on 6/22/23.
 //

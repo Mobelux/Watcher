@@ -1,6 +1,6 @@
 //
 //  Mock.swift
-//  DirectoryWatcher
+//  Watcher
 //
 //  Created by Mathew Gacy on 6/23/23.
 //
