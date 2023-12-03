@@ -1,5 +1,5 @@
 //
-//  DirectoryWatcherCoreTests.swift
+//  WatcherCoreTests.swift
 //  Watcher
 //
 //  Created by Mathew Gacy on 6/22/23.
@@ -9,6 +9,6 @@
 import Foundation
 import XCTest
 
-final class DirectoryMonitorCoreTests: XCTestCase {
+final class WatcherCoreTests: XCTestCase {
 
 }
