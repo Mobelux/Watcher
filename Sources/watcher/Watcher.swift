@@ -12,6 +12,11 @@ import WatcherCore
 /// The entry point for the `Watcher` command-line tool.
 @main
 struct Watcher: AsyncParsableCommand {
+    /// Configuration for this command.
+    static let configuration = CommandConfiguration(
+        abstract: "Execute commands when watched directories are modified.",
+        version: Version.number)
+
     /// The path to a configuration file.
     @Option(name: .shortAndLong, help: "The path to a configuration file.")
     var config: String? = nil

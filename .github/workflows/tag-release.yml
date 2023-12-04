@@ -1,0 +1,34 @@
+name: Tag Release
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'main'
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && github.head_ref == 'release'
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v4
+
+      - name: Get version
+        id: get-version
+        shell: bash
+        run: |
+          VERSION=$(grep -Eo '([0-9]+\.*)+' ${{ vars.VERSION_FILE_PATH }})
+          echo "current-version=$VERSION" >> $GITHUB_ENV
+
+      - name: Push tag
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ steps.generate-token.outputs.token }}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{ env.current-version }}',
+              sha: '${{ github.sha }}'
+            })

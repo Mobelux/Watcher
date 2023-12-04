@@ -18,7 +18,8 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-async-algorithms", from: "0.1.0"),
         .package(url: "https://github.com/eonist/FileWatcher.git", from: "0.2.3"),
         .package(url: "https://github.com/johnsundell/shellout.git", from: "2.3.0"),
-        .package(url: "https://github.com/jpsim/Yams.git", from: "5.0.4")
+        .package(url: "https://github.com/jpsim/Yams.git", from: "5.0.4"),
+        .package(url: "https://github.com/mobelux/swift-version-file-plugin", from: "0.1.0")
     ],
     targets: [
         .executableTarget(
