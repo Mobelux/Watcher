@@ -8,7 +8,12 @@
 import FileWatcher
 import Foundation
 
+/// A type that can generate a stream of Directory Events.
 public struct EventStreamGenerator {
+    /// Returns a stream of ``DirectoryEvent``s for the specified paths.
+    ///
+    /// - Parameter paths: The paths to watch.
+    /// - Returns: A stream of events.
     public static func changes(
         on paths: [String]
     ) -> AsyncThrowingStream<DirectoryEvent, Error> {

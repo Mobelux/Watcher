@@ -8,7 +8,15 @@
 import AsyncAlgorithms
 import Foundation
 
+/// The entry point for the `DirectoryWatcher` command-line tool.
 public struct DirectoryWatcherCore {
+    /// Watch the given directory for changes and execute commands in response.
+    ///
+    /// - Parameters:
+    ///   - path: The path of the directory to watch.
+    ///   - configurationPath: The path of the tool's configuration file.
+    ///   - throttleInterval: The minimum interval between command executions.
+    /// - Returns: A reference to the task.
     public static func watch(
         path: String? = nil,
         configurationPath: String? = nil,
@@ -39,6 +47,13 @@ public struct DirectoryWatcherCore {
 }
 
 extension DirectoryWatcherCore {
+    /// Runs the given operation asynchronously.
+    ///
+    /// - Parameters:
+    ///   - paths: The paths to watch.
+    ///   - throttleInterval: The minumum interval between command executions.
+    ///   - operation: The operation to perform.
+    /// - Returns: A reference to the task.
     static func makeTask(
         watching paths: [String],
         throttleInterval: Int,

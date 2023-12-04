@@ -2,9 +2,9 @@
 
 Swift CLI tool to execute commands when watched directories are modified
 
-## Installation
+## 🖥 Installation
 
-### Makefile
+### 📄 Makefile
 
 You can use the [`Makefile`](Makefile) to build and install:
 
@@ -12,7 +12,7 @@ You can use the [`Makefile`](Makefile) to build and install:
 make install
 ```
 
-### Manual
+### 🛠️ Manual
 
 Clone this repo and build the executable:
 
@@ -20,9 +20,9 @@ Clone this repo and build the executable:
 swift build -c release directory-watcher
 ```
 
-Copy the resulting binary at `.build/release/directory-watcher` to a location where it can be executed like `/usr/local/bin` 
+Copy the resulting binary at `.build/release/directory-watcher` to a location where it can be executed like `/usr/local/bin`
 
-## Configuration
+## 🎛️ Configuration
 
 DirectoryWatcher uses a `.watcher.yml` file at the root of the watched directory to define commands to execute when files matching a given glob -- and optionally, not matching an `exclude` glob -- are modified:
 
@@ -37,7 +37,7 @@ DirectoryWatcher uses a `.watcher.yml` file at the root of the watched directory
 
 The optional `name` value is used for terminal output.
 
-## Usage
+## ⚙️ Usage
 
 ```
 USAGE: directory-watcher [--config <config>] [--throttle <throttle>]
@@ -48,3 +48,7 @@ OPTIONS:
                           The minimum interval, in seconds, between command execution in response to file changes.
   -h, --help              Show help information.
 ```
+
+## 🔄 Alternatives
+
+- [watchman](https://github.com/facebook/watchman)
