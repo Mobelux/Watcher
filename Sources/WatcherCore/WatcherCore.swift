@@ -1,6 +1,6 @@
 //
-//  DirectoryWatcherCore.swift
-//  DirectoryWatcher
+//  WatcherCore.swift
+//  Watcher
 //
 //  Created by Mathew Gacy on 6/22/23.
 //
@@ -8,8 +8,8 @@
 import AsyncAlgorithms
 import Foundation
 
-/// The entry point for the `DirectoryWatcher` command-line tool.
-public struct DirectoryWatcherCore {
+/// The entry point for the `Watcher` command-line tool.
+public struct WatcherCore {
     /// Watch the given directory for changes and execute commands in response.
     ///
     /// - Parameters:
@@ -29,7 +29,7 @@ public struct DirectoryWatcherCore {
             ?? URL(fileURLWithPath: watchedPath).appendingPathComponent(Constants.defaultConfigurationPath)
 
         guard let configs: [CommandConfiguration] = try YAMLReader.live.read(at: configURL) else {
-            throw DirectoryWatcherError.custom("Unable to read expected config at `\(configURL)`")
+            throw WatcherError.custom("Unable to read expected config at `\(configURL)`")
         }
 
         // Make commands
@@ -46,7 +46,7 @@ public struct DirectoryWatcherCore {
     }
 }
 
-extension DirectoryWatcherCore {
+extension WatcherCore {
     /// Runs the given operation asynchronously.
     ///
     /// - Parameters:

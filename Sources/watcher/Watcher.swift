@@ -1,17 +1,17 @@
 //
-//  DirectoryWatcher.swift
-//  DirectoryWatcher
+//  Watcher.swift
+//  Watcher
 //
 //  Created by Mathew Gacy on 6/22/23.
 //
 
 import ArgumentParser
 import Foundation
-import DirectoryWatcherCore
+import WatcherCore
 
-/// The entry point for the `DirectoryWatcher` command-line tool.
+/// The entry point for the `Watcher` command-line tool.
 @main
-struct DirectoryWatcher: AsyncParsableCommand {
+struct Watcher: AsyncParsableCommand {
     /// The path to a configuration file.
     @Option(name: .shortAndLong, help: "The path to a configuration file.")
     var config: String? = nil
@@ -22,7 +22,7 @@ struct DirectoryWatcher: AsyncParsableCommand {
 
     /// Runs the command.
     mutating func run() async throws {
-        let watchTask = try DirectoryWatcherCore.watch(
+        let watchTask = try WatcherCore.watch(
             configurationPath: config,
             throttleInterval: throttle)
         try await watchTask.value

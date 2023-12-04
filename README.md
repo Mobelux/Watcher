@@ -1,4 +1,4 @@
-# DirectoryWatcher
+# Watcher
 
 Swift CLI tool to execute commands when watched directories are modified
 
@@ -17,14 +17,14 @@ make install
 Clone this repo and build the executable:
 
 ```
-swift build -c release directory-watcher
+swift build -c release watcher
 ```
 
-Copy the resulting binary at `.build/release/directory-watcher` to a location where it can be executed like `/usr/local/bin`
+Copy the resulting binary at `.build/release/watcher` to a location where it can be executed like `/usr/local/bin`
 
 ## 🎛️ Configuration
 
-DirectoryWatcher uses a `.watcher.yml` file at the root of the watched directory to define commands to execute when files matching a given glob -- and optionally, not matching an `exclude` glob -- are modified:
+Watcher uses a `.watcher.yml` file at the root of the watched directory to define commands to execute when files matching a given glob -- and optionally, not matching an `exclude` glob -- are modified:
 
 ```yml
 - pattern: "/Sources/**/*.swift"
@@ -40,7 +40,7 @@ The optional `name` value is used for terminal output.
 ## ⚙️ Usage
 
 ```
-USAGE: directory-watcher [--config <config>] [--throttle <throttle>]
+USAGE: watcher [--config <config>] [--throttle <throttle>]
 
 OPTIONS:
   -c, --config <config>   The path to a configuration file.

@@ -2,7 +2,7 @@ build:
 	swift build -c release
 
 install: build
-	install .build/release/directory-watcher /usr/local/bin/directory-watcher
+	install .build/release/watcher /usr/local/bin/watcher
 
 clean:
 	rm -rf .build
