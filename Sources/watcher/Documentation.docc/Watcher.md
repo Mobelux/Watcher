@@ -10,4 +10,5 @@ Execute commands when watched directories are modified.
 
 ### Essentials
 
+- <doc:Getting-started>
 - <doc:Configuring-Watcher>
