@@ -34,5 +34,5 @@ jobs:
           delete-branch: true
           title: '[CI] Prepare Version ${{ steps.bump.outputs.version }} Release'
           body: |
-            Updates `Version.swift` with bumped version number.
+            Update `Version.swift` with bumped version number.
           draft: false
