@@ -1,4 +1,4 @@
-name: Create Release
+name: Release
 on:
   pull_request:
     types:
@@ -9,12 +9,13 @@ on:
 jobs:
   test:
     name: Test
+    if: github.event.pull_request.merged == true && github.head_ref == 'release'
     uses: mobelux/Watcher/.github/workflows/test.yml@main
-  tag:
-    name: Tag
+  release:
+    name: Release
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && github.head_ref == 'release'
-    needs: [test]
+    needs: test
     steps:
       - name: Git checkout
         uses: actions/checkout@v4
@@ -29,7 +30,6 @@ jobs:
       - name: Push tag
         uses: actions/github-script@v6
         with:
-          github-token: ${{ steps.generate-token.outputs.token }}
           script: |
             github.rest.git.createRef({
               owner: context.repo.owner,
