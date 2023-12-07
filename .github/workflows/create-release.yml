@@ -37,3 +37,16 @@ jobs:
               ref: 'refs/tags/${{ env.current-version }}',
               sha: '${{ github.sha }}'
             })
+
+      - name: Create release
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: '${{ env.current-version }}',
+              generate_release_notes: true,
+              draft: false,
+              prerelease: false
+            })
