@@ -1,0 +1,29 @@
+name: Tests
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+jobs:
+  unit_tests:
+    if: github.event.pull_request.draft == false
+    name: Run Tests
+    runs-on: macos-13
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Build
+      run: swift build
+
+    - name: Run tests
+      run: swift test

@@ -1,11 +1,11 @@
 //
 //  Mock.swift
-//  DirectoryWatcher
+//  Watcher
 //
 //  Created by Mathew Gacy on 6/23/23.
 //
 
-@testable import DirectoryWatcherCore
+@testable import WatcherCore
 import Foundation
 
 enum Mock {}

@@ -1,11 +1,11 @@
 //
 //  YAMLReader+Mock.swift
-//  DirectoryWatcher
+//  Watcher
 //
 //  Created by Mathew Gacy on 7/6/23.
 //
 
-@testable import DirectoryWatcherCore
+@testable import WatcherCore
 import Foundation
 
 extension YAMLReader {
