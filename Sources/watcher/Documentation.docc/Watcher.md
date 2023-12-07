@@ -1,4 +1,4 @@
-# ``Watcher``
+# ``watcher``
 
 Execute commands when watched directories are modified.
 
@@ -9,3 +9,6 @@ Execute commands when watched directories are modified.
 ## Topics
 
 ### Essentials
+
+- <doc:Getting-started>
+- <doc:Configuring-Watcher>
