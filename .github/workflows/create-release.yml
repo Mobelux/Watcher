@@ -7,10 +7,14 @@ on:
       - 'main'
 
 jobs:
+  test:
+    name: Test
+    uses: mobelux/Watcher/.github/workflows/test.yml@main
   tag:
     name: Tag
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && github.head_ref == 'release'
+    needs: [test]
     steps:
       - name: Git checkout
         uses: actions/checkout@v4
