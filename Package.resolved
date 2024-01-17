@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ChimeHQ/GlobPattern.git",
       "state" : {
-        "revision" : "93c5308b13980265b77c2c652a674ef882aa1ed9",
-        "version" : "0.1.0"
+        "revision" : "4ebb9e89e07cc475efa74f87dc6d21f4a9e060f8",
+        "version" : "0.1.1"
       }
     },
     {
