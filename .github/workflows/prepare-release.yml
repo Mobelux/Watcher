@@ -35,4 +35,5 @@ jobs:
           title: '[CI] Prepare Version ${{ steps.bump.outputs.version }} Release'
           body: |
             Update `Version.swift` with bumped version number.
+          labels: ci
           draft: false
