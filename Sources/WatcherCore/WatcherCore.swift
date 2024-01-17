@@ -63,7 +63,7 @@ extension WatcherCore {
             do {
                 for try await event in EventStreamGenerator
                     .changes(on: paths)
-                    .throttle(for: .seconds(throttleInterval)) {
+                    ._throttle(for: .seconds(throttleInterval)) {
                     await operation(event)
                 }
             } catch {

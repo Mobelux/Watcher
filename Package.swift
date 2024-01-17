@@ -15,7 +15,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/ChimeHQ/GlobPattern.git", from: "0.1.0"),
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.0"),
-        .package(url: "https://github.com/apple/swift-async-algorithms", from: "0.1.0"),
+        .package(url: "https://github.com/apple/swift-async-algorithms", from: "1.0.0"),
         .package(url: "https://github.com/eonist/FileWatcher.git", from: "0.2.3"),
         .package(url: "https://github.com/johnsundell/shellout.git", from: "2.3.0"),
         .package(url: "https://github.com/jpsim/Yams.git", from: "5.0.4"),
