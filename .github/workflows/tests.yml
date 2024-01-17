@@ -5,12 +5,18 @@ on:
   workflow_dispatch:
   push:
     branches: [ main ]
+    paths:
+      - '**.swift'
+      - '.github/workflows/tests.yml'
   pull_request:
     types:
       - opened
       - reopened
       - synchronize
       - ready_for_review
+    paths:
+      - '**.swift'
+      - '.github/workflows/tests.yml'
 
 jobs:
   unit_tests:
